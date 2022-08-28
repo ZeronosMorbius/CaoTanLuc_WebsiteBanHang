@@ -5,7 +5,7 @@
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="cache-control" content="max-age=604800" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Website title - bootstrap html template</title>
+    <title>Cao Tấn Lực</title>
     <link href="~/Content/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!-- jQuery -->
     <script src="~/Scripts/js/jquery-2.0.0.min.js" type="text/javascript"></script>
@@ -40,15 +40,15 @@
                             <div class="input-group w-100">
                                 <select class="custom-select border-right" name="category_name">
                                     <option value="">Tất cả sản phẩm</option>
-                                    <option value="codex">Special</option>
-                                    <option value="comments">Only best</option>
-                                    <option value="content">Latest</option>
+                                    <option value="codex">Đặc biệt</option>
+                                    <option value="comments">Tốt nhất</option>
+                                    <option value="content">Cuối cùng</option>
                                 </select>
                                 <input type="text" class="form-control" placeholder="Search">
 
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-search"></i> Search
+                                        <i class="fa fa-search"></i> Tìm Kiếm
                                     </button>
                                 </div>
                             </div>
@@ -93,9 +93,10 @@
                                 </a>
                             </div>
                             <div class="widget-header">
-                                <a href="#" class="widget-view">
+                                <a href="@Url.Action("Index","Cart")" class="widget-view">
                                     <div class="icon-area">
                                         <i class="fa fa-shopping-cart"></i>
+                                        <span class="notify" id="CartCount">@Session["count"]</span>
                                     </div>
                                     <small class="text"> Giỏ Hàng </small>
                                 </a>
@@ -121,16 +122,16 @@
                             <div class="dropdown-menu dropdown-large">
                                 <nav class="row">
                                     <div class="col-6">
-                                        <a href="page-index-1.html">Home page 1</a>
-                                        <a href="page-index-2.html">Home page 2</a>
-                                        <a href="page-category.html">All category</a>
-                                        <a href="page-listing-large.html">Listing list</a>
-                                        <a href="page-listing-grid.html">Listing grid</a>
-                                        <a href="page-shopping-cart.html">Shopping cart</a>
-                                        <a href="page-detail-product.html">Product detail</a>
-                                        <a href="page-content.html">Page content</a>
-                                        <a href="page-user-login.html">Page login</a>
-                                        <a href="page-user-register.html">Page register</a>
+                                        <a href="page-index-1.html">Trang Chủ 1</a>
+                                        <a href="page-index-2.html">Trang Chủ 2</a>
+                                        <a href="page-category.html">Tất cả danh mục</a>
+                                        <a href="page-listing-large.html">Danh sách niêm yết</a>
+                                        <a href="page-listing-grid.html">Danh sách niêm yết</a>
+                                        <a href="page-shopping-cart.html">Giỏ hàng</a>
+                                        <a href="page-detail-product.html">Chi tiết sản phẩm</a>
+                                        <a href="page-content.html">Trang nội dung</a>
+                                        <a href="page-user-login.html">Trang sản phẩm</a>
+                                        <a href="page-user-register.html">Trang đăng kí</a>
                                     </div>
                                     <div class="col-6">
                                         <a href="page-profile-main.html">Profile main</a>
@@ -160,7 +161,7 @@
                     </ul>
                     <ul class="navbar-nav ml-md-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Get the app</a>
+                            <a class="nav-link" href="#">Tải ứng dụng</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown">English</a>

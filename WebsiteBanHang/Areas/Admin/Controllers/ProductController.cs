@@ -1,22 +1,20 @@
-﻿using PagedList;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using WebsiteBanHang.Context;
-using static WebsiteBanHang.Common;
 
-namespace WebsiteBanHang.Areas.Admin.Controllers
+namespace Websitebanhang.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
         WebsiteBanHangEntities5 websiteBanHangEntities5 = new WebsiteBanHangEntities5();
         // GET: Admin/Product
-        public ActionResult Index(string currentFilter, string SearchString, int? page)
+        public ActionResult Index(String currentFilter, String SearchString, int? page)
         {
             var lstProduct = new List<Product>();
             if (SearchString != null)
@@ -27,8 +25,9 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             {
                 SearchString = currentFilter;
             }
-            if (!string.IsNullOrEmpty(SearchString))
+            if (!String.IsNullOrEmpty(SearchString))
             {
+
                 lstProduct = websiteBanHangEntities5.Products.Where(n => n.Name.Contains(SearchString)).ToList();
             }
             else
@@ -41,27 +40,27 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             lstProduct = lstProduct.OrderByDescending(n => n.Id).ToList();
             return View(lstProduct.ToPagedList(pageNumber, pageSize));
         }
+
         [HttpGet]
         public ActionResult Create()
         {
-            this.LoadData();
+
             return View();
         }
-        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Create(Product objProduct)
+        public ActionResult Create(Product objproduct)
         {
             try
             {
-                if (objProduct.ImageUpLoad != null)
+                if (objproduct.ImageUpload != null)
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpLoad.FileName);
-                    string extension = Path.GetExtension(objProduct.ImageUpLoad.FileName);
+                    string fileName = Path.GetFileNameWithoutExtension(objproduct.ImageUpload.FileName);
+                    string extension = Path.GetExtension(objproduct.ImageUpload.FileName);
                     fileName = fileName + extension;
-                    objProduct.Avatar = fileName;
-                    objProduct.ImageUpLoad.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                    objproduct.Avatar = fileName;
+                    objproduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images"), fileName));
                 }
-                websiteBanHangEntities5.Products.Add(objProduct);
+                websiteBanHangEntities5.Products.Add(objproduct);
                 websiteBanHangEntities5.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -69,100 +68,45 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index");
             }
-            this.LoadData();
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    if (objProduct.ImageUpLoad != null)
-                    {
-                        string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpLoad.FileName);
-                        string extension = Path.GetExtension(objProduct.ImageUpLoad.FileName);
-                        fileName = fileName + extension;
-                        objProduct.Avatar = fileName;
-                        objProduct.ImageUpLoad.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
-                    }
-                    objProduct.CreatedOnUtc = DateTime.Now;
-                    websiteBanHangEntities5.Products.Add(objProduct);
-                    websiteBanHangEntities5.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    return View();
-                }
-            }
+        }
+        [HttpGet]
+        public ActionResult Details(int Id)
+        {
+            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(objProduct);
         }
-
-        void LoadData()
-        {
-            Common objCommon = new Common();
-            var lstCat = websiteBanHangEntities5.Categories.ToList();
-            ListtoDataTableConverter converter = new ListtoDataTableConverter();
-            DataTable dtCategory = converter.ToDataTable(lstCat);
-            ViewBag.ListCategory = objCommon.ToSelectList(dtCategory, "Id", "Name");
-
-            var lstBrand = websiteBanHangEntities5.Brands.ToList();
-            DataTable dtBrand = converter.ToDataTable(lstBrand);
-            ViewBag.ListBrand = objCommon.ToSelectList(dtBrand, "Id", "Name");
-
-            List<ProductType> lstProductType = new List<ProductType>();
-            ProductType objProductType = new ProductType();
-            objProductType.Id = 01;
-            objProductType.Name = "Giảm giá sốc";
-            lstProductType.Add(objProductType);
-
-            objProductType = new ProductType();
-            objProductType.Id = 02;
-            objProductType.Name = "Dề xuất";
-            lstProductType.Add(objProductType);
-
-            DataTable dtProductType = converter.ToDataTable(lstProductType);
-            ViewBag.ProductType = objCommon.ToSelectList(dtProductType, "Id", "Name");
-        }
-
         [HttpGet]
-        public ActionResult Details(int id)
+        public ActionResult Delete(int Id)
         {
-            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == id).FirstOrDefault();
-            return View(objProduct);
-        }
-
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == id).FirstOrDefault();
-
+            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(objProduct);
         }
         [HttpPost]
-        public ActionResult Delete(Product objPro)
+        public ActionResult Delete(Product objproduct)
         {
-            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == objPro.Id).FirstOrDefault();
+            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == objproduct.Id).FirstOrDefault();
             websiteBanHangEntities5.Products.Remove(objProduct);
             websiteBanHangEntities5.SaveChanges();
             return RedirectToAction("Index");
         }
-
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int Id)
         {
-            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == id).FirstOrDefault();
+            var objProduct = websiteBanHangEntities5.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(objProduct);
         }
         [HttpPost]
-        public ActionResult Edit(Product objPro)
+        public ActionResult Edit(int id, Product objProduct)
         {
-            if (objPro.ImageUpLoad != null)
+            if (objProduct.ImageUpload != null)
             {
-                string fileName = Path.GetFileNameWithoutExtension(objPro.ImageUpLoad.FileName);
-                string extension = Path.GetExtension(objPro.ImageUpLoad.FileName);
+                string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
+                string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
                 fileName = fileName + extension;
-                objPro.Avatar = fileName;
-                objPro.ImageUpLoad.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                objProduct.Avatar = fileName;
+                objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images"), fileName));
             }
-            websiteBanHangEntities5.Entry(objPro).State = EntityState.Modified;
+            websiteBanHangEntities5.Entry(objProduct).State = EntityState.Modified;
             websiteBanHangEntities5.SaveChanges();
             return RedirectToAction("Index");
         }
