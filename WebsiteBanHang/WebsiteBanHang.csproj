@@ -2152,9 +2152,17 @@
     <Content Include="Content\images\items\8.jpg" />
     <Content Include="Content\images\items\9.jpg" />
     <Content Include="Content\images\items\airpodpro.jpg" />
+    <Content Include="Content\images\items\applewatch6.png" />
+    <Content Include="Content\images\items\applewatch7.jpg" />
+    <Content Include="Content\images\items\appwatchse.jpg" />
     <Content Include="Content\images\items\asusrogzephyrus.jpg" />
     <Content Include="Content\images\items\asusvivobook.jpg" />
     <Content Include="Content\images\items\cusacnhanhiphone.jpg" />
+    <Content Include="Content\images\items\donghocandy.jfif" />
+    <Content Include="Content\images\items\donghogimto.jfif" />
+    <Content Include="Content\images\items\donghotissot.jpg" />
+    <Content Include="Content\images\items\hublot1.jpg" />
+    <Content Include="Content\images\items\hublot2.jpg" />
     <Content Include="Content\images\items\ipad9.png" />
     <Content Include="Content\images\items\ipadair5.jpg" />
     <Content Include="Content\images\items\ipadpro.jpeg" />
@@ -2168,6 +2176,7 @@
     <Content Include="Content\images\items\laptop2.jpg" />
     <Content Include="Content\images\items\laptop3.jpg" />
     <Content Include="Content\images\items\laptophpelitebook.jpg" />
+    <Content Include="Content\images\items\miband7.jpg" />
     <Content Include="Content\images\items\moxpadx3.jpg" />
     <Content Include="Content\images\items\nokia.jpg" />
     <Content Include="Content\images\items\nokia2.jpg" />
@@ -2177,6 +2186,7 @@
     <Content Include="Content\images\items\samsunga12.jpg" />
     <Content Include="Content\images\items\samsunga13.jpg" />
     <Content Include="Content\images\items\samsunga22.jpg" />
+    <Content Include="Content\images\items\samsungwatch2.jpg" />
     <Content Include="Content\images\logo-white.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo.svg" />

@@ -135,7 +135,7 @@
             <div class="row no-gutters">
                 <div class="col-md-3">
 
-                    <div class="home-category-banner bg-light-orange">
+                    <div class="home-category-banner bg-light-green">
                         <h5 class="title">Sản phẩm nổi bật của APPLE</h5>
                         <a href="#" class="btn btn-outline-primary rounded-pill">Xem ngay</a>
                         <img src="~/Content/images/avatars/apple.jpeg" class="img-bg">
@@ -174,7 +174,7 @@
             <div class="row no-gutters">
                 <div class="col-md-3">
 
-                    <div class="home-category-banner bg-light-orange">
+                    <div class="home-category-banner bg-light-green">
                         <h5 class="title">Sản phẩm nổi bật của Samsung</h5>
                         <a href="#" class="btn btn-outline-primary rounded-pill">Xem ngay</a>
                         <img src="~/Content/images/items/a53.jpg" class="img-bg">
@@ -272,7 +272,7 @@
             <h4 class="title-section text-uppercase">Sản Phẩm Đề Xuất</h4>
         </header>
         <div class="row row-sm">
-            @foreach (var item in Model.ListProduct.Where(n => n.TypeId == 2).Take(6))
+            @foreach (var item in Model.ListProduct.Where(n => n.TypeId == 1).Take(6))
             {
                 <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                     <div href="#" class="card card-sm card-product-grid">
